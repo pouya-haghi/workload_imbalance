@@ -1,0 +1,115 @@
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 249481 RUNNING AT c410-123
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+Initial Residual = 11027.8
+Iteration = 15   Residual = 150.149
+Iteration = 30   Residual = 0.981782
+Iteration = 45   Residual = 0.00595096
+Iteration = 60   Residual = 1.91007e-05
+Iteration = 75   Residual = 1.34499e-07
+Iteration = 90   Residual = 8.10223e-10
+Iteration = 105   Residual = 5.5914e-12
+Iteration = 120   Residual = 2.93263e-14
+Iteration = 135   Residual = 1.8525e-16
+Iteration = 149   Residual = 1.83468e-18
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 24
+  Number of OpenMP threads: 1
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 1.83468e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 20.3939
+  DDOT    : 2.33844
+  WAXPBY  : 1.43694
+  SPARSEMV: 16.5538
+FLOPS Summary: 
+  Total   : 2.28864e+11
+  DDOT    : 1.4304e+10
+  WAXPBY  : 2.1456e+10
+  SPARSEMV: 1.93104e+11
+MFLOPS Summary: 
+  Total   : 11222.2
+  DDOT    : 6116.91
+  WAXPBY  : 14931.8
+  SPARSEMV: 11665.3
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 1.64374
+  Max DDOT MPI_Allreduce time: 2.08982
+  Avg DDOT MPI_Allreduce time: 1.83594
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 11360.8
+  SPARSEMV PARALLEL OVERHEAD Time: 0.443685
+  SPARSEMV PARALLEL OVERHEAD Pct: 2.6103
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.389403
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 2.29095
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 0.0542817
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 0.319352
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 249777 RUNNING AT c410-123
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+Initial Residual = 24109.4
+Iteration = 15   Residual = 322.541
+[mpiexec@c401-083.stampede2.tacc.utexas.edu] Sending Ctrl-C to processes as requested
+[mpiexec@c401-083.stampede2.tacc.utexas.edu] Press Ctrl-C again to force abort
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 250226 RUNNING AT c410-123
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 250364 RUNNING AT c410-123
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+Initial Residual = 13969.1
+Iteration = 15   Residual = 190.909
+Iteration = 30   Residual = 1.26783
+Iteration = 45   Residual = 0.00809159
+Iteration = 60   Residual = 4.70788e-05
+Iteration = 75   Residual = 2.9742e-07
+Iteration = 90   Residual = 1.85875e-09
+[mpiexec@c401-023.stampede2.tacc.utexas.edu] Sending Ctrl-C to processes as requested
+[mpiexec@c401-023.stampede2.tacc.utexas.edu] Press Ctrl-C again to force abort
+Initial Residual = 17165
+Iteration = 15   Residual = 230.122
+Iteration = 30   Residual = 1.56249
+Iteration = 45   Residual = 0.010647
+Iteration = 60   Residual = 7.21482e-05
+Iteration = 75   Residual = 4.82983e-07
+[mpiexec@c401-023.stampede2.tacc.utexas.edu] Sending Ctrl-C to processes as requested
+[mpiexec@c401-023.stampede2.tacc.utexas.edu] Press Ctrl-C again to force abort

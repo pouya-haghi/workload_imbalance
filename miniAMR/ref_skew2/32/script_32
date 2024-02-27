@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#SBATCH -J miniAMR32nodes           # Job name
+#SBATCH -o n_fused_col.o%j       # Name of stdout output file
+#SBATCH -e n_fused_col.e%j       # Name of stderr error file
+#SBATCH -p skx-normal      # Queue (partition) name
+#SBATCH -N 32               # Total # of nodes 
+#SBATCH --ntasks-per-node=24
+#SBATCH --exclusive
+#SBATCH -t 00:03:00        # Run time (hh:mm:ss)
+#SBATCH --mail-user=haghi@bu.edu
+#SBATCH --mail-type=all    # Send email at begin and end of job
+
+# Other commands must follow all #SBATCH directives...
+# module load gcc/7.1.0
+# module load mkl/18.0.2
+
+
+curr_dir=$( pwd )
+# Data output directory path
+dir_path="$curr_dir/.."
+data_path="$curr_dir/data"
+
+
+# Set thread count (default value is 1)...
+
+
+max_iter=1
+
+for ((iter=1; iter<=$max_iter; iter=iter+1))
+do
+	########################## allred_dotprod_allred1 ##########################
+
+	export OMP_NUM_THREADS=24
+
+	# if using CPU version with MKL backend, set MKL_NUM_THREADS as well
+	export MKL_NUM_THREADS=24
+
+	# run the miniapp
+	ibrun "$dir_path/miniAMR.x" --npx 8 --npy 8 --npz 12 --nx 10 --ny 10 --nz 10 --num_tsteps 10 >> $data_path/miniAMR32_1_new.txt
+	#_numnode_numthread
+	# export OMP_NUM_THREADS=24
+
+	# # if using CPU version with MKL backend, set MKL_NUM_THREADS as well
+	# export MKL_NUM_THREADS=24
+
+	# # run the miniapp
+	# ibrun "$dir_path/miniFE.x" nx=256 ny=256 nz=64 >> $data_path/minife32_24_new.txt
+	# #_numnode_numthread
+
+	# export OMP_NUM_THREADS=48
+
+	# # if using CPU version with MKL backend, set MKL_NUM_THREADS as well
+	# export MKL_NUM_THREADS=48
+
+	# # run the miniapp
+	# ibrun "$dir_path/miniFE.x" nx=256 ny=256 nz=64 >> $data_path/minife32_48_new.txt
+	#_numnode_numthread
+
+done
+# Launch MPI code... 
+
+# ---------------------------------------------------

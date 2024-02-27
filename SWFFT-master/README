@@ -1,0 +1,377 @@
+SWFFT (HACC)
+Adrian Pope (et al)
+apope@anl.gov
+2017-10-25
+
+========
+Overview
+========
+
+This directory contains the code necessary to run the Hardware Accelerated
+Cosmology Code (HACC) 3D distributed memory discrete fast Fourier transform,
+a lightweight make system, drivers for an example test code in C++ (TestDfft)
+as well as Fortran (TestFDfft), and a utility that checks grid sizes and 
+MPI rank layouts (CheckDecomposition).
+
+This code assumes that global grid will originally be distributed between
+MPI ranks using a 3D Cartesian communicator. That data needs to be
+re-distributed to three 2D pencil distributions in turn in order to compute
+the DFFTs along each dimension.
+
+Functionally, a Distribution object is instantiated based on a parent
+MPI_Comm, and that Distribution instance will create and track the Cartesian
+communicators for the initial 3D distribution and the three 2D pencil
+distributions. A Dfft object is then instantiated based on the Distribution
+object in order to coordinate the operations to actually execute the
+3D distributed memory DFFT. The Dfft instance also has convenience methods
+to access the communicators and geometric information for the MPI distribution
+in "real space" (initial 3D distribution) and "k space" (2D pencils in z).
+
+This code does not work for arbitrary grid sizes and number of MPI ranks.
+The specific constraints are difficult to enumerate in a compact way, but a
+rule of thumb is that it generally works when the number of vertexes along
+one side of the global 3D grid ("ng")can be factored into small primes, and
+when the number of MPI ranks can also be factored into small primes.
+I believe that all of the unique prime factors of the number of MPI ranks
+must be present in the set of prime factors of the grid, eg. if you have
+20 MPI ranks then ng must be a multiple of 5 and 2. The "CheckDecomposition"
+utility is provided to check (on one rank) whether a proposed grid size and
+number of MPI ranks will work, which can be done before submitting a large
+test with TestDfft/TestFDfft.
+
+========
+Building
+========
+
+-------------------
+System Requirements
+-------------------
+
+MPI (known to work for 2.2 and newer, may work with some older versions)
+FFTW3 (double precision, OpenMP optional, does not use FFTW3's MPI interface)
+
+---------
+Makefiles
+---------
+
+The default GNUmakefile contains the basic build rules and will create an
+MPI-only version of the code:
+
+$ make
+
+By default the GNUmakefile will make the C/C++ interface and test driver 
+and the CheckDecomposition utility. The Fortran interface and test driver
+are not built by default as the GNUmakefile will often require modification
+to properly build and link the application. To make everything:
+
+$ make all
+
+There are also rules to make subsets of these:
+
+$ make nativec
+$ make utilities
+$ make fortran
+
+There is also an example of how to modify the makefile to compile with OpenMP
+threading on each MPI rank:
+
+$ make -f GNUmakefile.openmp
+
+---------------------
+Environment Variables
+---------------------
+
+The base GNUmakefile uses variables that can be over-ridden by variable
+settings in makefiles that include the base makefile at the end (eg. see
+GNUmakefile.openmp example) or by environment variables. All of the variables
+start with the preamble "DFFT_MPI_". For example, if one wanted to build this
+code on a cray system without editing the makefiles one could set these
+environment variables:
+
+$ export DFFT_MPI_CC=cc
+$ export DFFT_MPI_CXX=CC
+$ export DFFT_MPI_FC=ftn
+
+When using the Intel compilers without the Cray wrappers it may be easier to
+use the Intel-specific MPI wrappers, eg:
+
+$ export DFFT_MPI_CC=mpiicc
+$ export DFFT_MPI_CXX=mpiicpc
+$ export DFFT_MPI_FC=mpiifort
+
+If FFTW3 is in C/PATH, then the GNUmakefile will find it by searching for the
+fftw-wisdom executable. An alternate FFTW3 installation can be specified by
+setting an environment variable to the directory above the "include" and "lib"
+directories:
+
+$ export DFFT_FFTW_HOME=/path/to/fftw3
+
+See the base GNUmakefile for a commented list of variables.
+
+==================
+TestDfft (Example)
+==================
+
+-----
+Usage
+-----
+
+The default GNUmakefile will build object files and executables into the
+"build" subdirectory. The command line signature for the test program is
+
+$ build/TestDfft <n_repetitions> <ngx> [ngy ngz]
+
+where <n_repetitions> is the number of times to run the complete forward and
+backward test (in case there are memory-system effects that make timing
+information different after the first repetition), and <ngx> is the number
+of grid vertexes along one side of the entire 3D grid volume. The user can
+optionally also provide "ngy" and "ngz" to test a non-cubic DFFT, though
+HACC does not use this feature so some code paths may not be well-tested.
+
+The test itself sets up a dirac delta at [0,0,0] in real space, which
+should be transformed to (1.0, 0.0) at every grid vertex in k-space, and
+should transform back to (1.0*ngx*ngy*ngz, 0.0) at [0,0,0] in real space and
+(0.0, 0.0) everywhere else. Information written to stdout should indicated
+whether the correct numerical result has been obtained.
+
+------------------------------------------
+Timing Information and Pre-Processor Flags
+------------------------------------------
+
+The Dfft.hpp source file uses the pre-processor flag "DFFT_TIMING" to control
+the granularity of timing information collected and reported to stdout. If
+an external value is not supplied, Dfft.hpp will set a value of "0" and will
+not report any timing data.
+
+The TestDfft.cpp driver will set DFFT_TIMING=1 if no external value is
+supplied, which is medium granularity. The total time spent in distribution
+communication will be printed as "DFFT ?dist", and the total time spent
+computing the (many) 1D DFFTs will be printed as "DFFT ?dfft", where ? is
+"f" for forward and "b" for backward.
+
+The default GNUmakefile adds a preprocessor flag to set DFFT_TIMING=2 for
+maximum timing granularity. In addition to the overall timing split between
+communication and computation, Dfft.hpp will also print the timing for each
+sequential operation in the transform, where "1d?" indicated the 1D DFFTs in
+the ?={x,y,z} pencils, and "d32"/"d23" indication the re-distribution
+communication steps between 3D cubes and 2D pencils.
+
+The TestDfft.cpp driver also separately times the full transform in each
+direction and reports as "FORWARD" and "BACKWARD", so this will be reported
+even if DFFT_TIMING=0.
+
+When using the supplied makefiles one can set the timing behavior by
+over-riding the pre-processor flag with an environment variable, eg. 
+
+$ export DFFT_MPI_CPPFLAGS='-DDFFT_TIMING=0'
+
+or
+
+$ export DFFT_MPI_CPPFLAGS='-DDFFT_TIMING=1'
+
+Setting DFFT_TIMING>0 causes extra MPI synchronization points to be compiled
+into the code along with additional statements printed to stdout, both of
+which can add noticeably to the wall-clock time for transforms that take
+seconds and less. Absolute timing should be done with DFFT_TIMING=0, and
+higher granularity timing should be used when trying to analyze the
+balance of compute and communication.
+
+The timing information itself is presented as the maximum, average, minimum,
+and standard deviation of the time (in seconds) it takes each MPI rank to
+perform the timed operation. The maximum is used to understand wallclock,
+and the other timing information can help understand load balancing.
+
+--------------
+Example Output
+--------------
+
+(from a virtual machine on an old laptop for a very small grid,
+so timing information is not particularly meaningful)
+
+$ mpirun -n 8 ./build/TestDfft 2 128
+Initializing redistribution using a pencil layout on 8 ranks.
+distribution 1D: [8:1:1]
+distribution 3D: [2:2:2]
+distribution 2z: [4:2:1]
+distribution 2x: [1:4:2]
+distribution 2y: [4:1:2]
+DFFT  init  max 8.842e-01s  avg 8.493e-01s  min 7.956e-01s  dev 2.867e-02s
+
+Hex representations of double precision floats
+0.000000e+00 = 0
+1.000000e+00 = 3ff0000000000000
+2097152.000000 = 4140000000000000
+
+
+TESTING 0
+
+DFFT  fd32  max 1.483e-01s  avg 1.215e-01s  min 9.330e-02s  dev 1.718e-02s
+DFFT  f1dx  max 1.299e-02s  avg 4.973e-03s  min 1.223e-03s  dev 4.292e-03s
+DFFT  fd23  max 1.064e-01s  avg 8.129e-02s  min 5.343e-02s  dev 1.682e-02s
+DFFT  fd32  max 7.192e-02s  avg 5.093e-02s  min 3.611e-02s  dev 1.194e-02s
+DFFT  f1dy  max 1.718e-02s  avg 6.016e-03s  min 1.196e-03s  dev 5.774e-03s
+DFFT  fd23  max 1.057e-01s  avg 7.999e-02s  min 4.650e-02s  dev 1.843e-02s
+DFFT  fd32  max 6.701e-02s  avg 4.245e-02s  min 2.547e-02s  dev 1.271e-02s
+DFFT  f1dz  max 3.062e-02s  avg 8.763e-03s  min 1.352e-03s  dev 9.442e-03s
+DFFT fdist  max 4.391e-01s  avg 3.762e-01s  min 3.017e-01s  dev 3.845e-02s
+DFFT fdfft  max 5.279e-02s  avg 1.975e-02s  min 9.406e-03s  dev 1.305e-02s
+FORWARD     max 7.133e-01s  avg 7.041e-01s  min 6.937e-01s  dev 5.967e-03s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 3.230e-02s  avg 1.185e-02s  min 1.604e-03s  dev 1.056e-02s
+DFFT  bd23  max 8.118e-02s  avg 6.167e-02s  min 4.789e-02s  dev 1.157e-02s
+DFFT  bd32  max 8.238e-02s  avg 5.588e-02s  min 2.506e-02s  dev 2.362e-02s
+DFFT  b1dy  max 2.487e-02s  avg 1.018e-02s  min 1.321e-03s  dev 8.782e-03s
+DFFT  bd23  max 1.090e-01s  avg 6.475e-02s  min 3.260e-02s  dev 2.493e-02s
+DFFT  bd32  max 1.248e-01s  avg 9.706e-02s  min 7.711e-02s  dev 1.720e-02s
+DFFT  b1dx  max 1.080e-02s  avg 3.249e-03s  min 1.341e-03s  dev 3.219e-03s
+DFFT  bd23  max 1.183e-01s  avg 8.522e-02s  min 4.021e-02s  dev 2.573e-02s
+DFFT bdist  max 4.275e-01s  avg 3.646e-01s  min 3.135e-01s  dev 3.802e-02s
+DFFT bdfft  max 3.945e-02s  avg 2.528e-02s  min 5.647e-03s  dev 1.160e-02s
+BACKWARD    max 7.678e-01s  avg 7.539e-01s  min 7.441e-01s  dev 7.634e-03s
+
+r-space:
+a[0,0,0] = (2097152.000000,0.000000) = (4140000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+
+TESTING 1
+
+DFFT  fd32  max 1.152e-01s  avg 9.609e-02s  min 7.382e-02s  dev 1.620e-02s
+DFFT  f1dx  max 1.148e-02s  avg 3.291e-03s  min 1.217e-03s  dev 3.393e-03s
+DFFT  fd23  max 1.060e-01s  avg 7.944e-02s  min 6.033e-02s  dev 1.554e-02s
+DFFT  fd32  max 8.980e-02s  avg 5.998e-02s  min 3.596e-02s  dev 1.830e-02s
+DFFT  f1dy  max 1.456e-02s  avg 5.996e-03s  min 1.170e-03s  dev 5.025e-03s
+DFFT  fd23  max 1.205e-01s  avg 8.899e-02s  min 7.461e-02s  dev 1.446e-02s
+DFFT  fd32  max 5.967e-02s  avg 4.354e-02s  min 1.836e-02s  dev 1.364e-02s
+DFFT  f1dz  max 1.762e-02s  avg 8.053e-03s  min 2.670e-03s  dev 4.794e-03s
+DFFT fdist  max 4.128e-01s  avg 3.680e-01s  min 2.851e-01s  dev 4.372e-02s
+DFFT fdfft  max 2.816e-02s  avg 1.734e-02s  min 7.207e-03s  dev 5.958e-03s
+FORWARD     max 6.934e-01s  avg 6.783e-01s  min 6.647e-01s  dev 1.051e-02s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 7.557e-02s  avg 2.649e-02s  min 1.194e-03s  dev 2.715e-02s
+DFFT  bd23  max 9.977e-02s  avg 7.477e-02s  min 3.803e-02s  dev 2.135e-02s
+DFFT  bd32  max 4.491e-02s  avg 3.625e-02s  min 2.999e-02s  dev 5.085e-03s
+DFFT  b1dy  max 5.003e-02s  avg 1.611e-02s  min 1.194e-03s  dev 1.745e-02s
+DFFT  bd23  max 1.145e-01s  avg 8.133e-02s  min 3.508e-02s  dev 2.421e-02s
+DFFT  bd32  max 1.265e-01s  avg 9.548e-02s  min 7.012e-02s  dev 2.223e-02s
+DFFT  b1dx  max 1.218e-02s  avg 2.647e-03s  min 1.182e-03s  dev 3.603e-03s
+DFFT  bd23  max 1.292e-01s  avg 8.848e-02s  min 6.031e-02s  dev 2.268e-02s
+DFFT bdist  max 5.004e-01s  avg 3.763e-01s  min 2.985e-01s  dev 7.373e-02s
+DFFT bdfft  max 9.930e-02s  avg 4.525e-02s  min 4.440e-03s  dev 3.251e-02s
+BACKWARD    max 8.124e-01s  avg 7.991e-01s  min 7.824e-01s  dev 8.331e-03s
+
+r-space:
+a[0,0,0] = (2097152.000000,0.000000) = (4140000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+===========================
+TestFDfft (Fortran Example)
+===========================
+
+-----
+Usage
+-----
+
+This test program proivdes an example interface for the Fortran wrappers
+built around the the C++ Distribution and Dfft classes. The structure
+and usage of this program is identical to the C++ TestDfft dirver. The
+command line signature follows as
+
+$ build/TestFDfft <n_repetitions> <ngx> [ngy ngz]
+
+with the same interpretation as described above for TestDfft.  
+
+The Fortran wrappers are contained in the FDistribution and FDfft modules
+which are built around the F2003 standard ISO_C_BINDING module. An 
+important point to make is that the Fortran wrappers interface with C 
+pointers to the Fortran arrays containing the data to be transformed. This 
+is achieved using the F2003 standard C_F_POINTER subroutine. In addition, 
+optimal memory alignment is obtained using the fftw_alloc_complex function. 
+The TestFDfft driver provides a good example of each of these procedures. 
+See further notes below regarding the usage of multidimensional arrays 
+within the Fortran interface.
+
+--------------
+Example Output
+--------------
+
+The output from TestFDfft will match that of TestDfft shown above including
+the hexadecimal cast to check bit-wise numerical accuracy.
+
+============================
+CheckDecomposition (Utility)
+============================
+
+-----
+Usage
+-----
+
+Though CheckDecomposition is built with MPI it is intended to run serially
+with the proposed number of MPI ranks as a command line argument, eg.
+
+$ ./CheckDecomposition <ngx> <ngy> <ngz> <Nproc> [nx ny nz]
+
+where <ngx>, <ngy>, and <ngz> are the number of vertexes along each side
+of the global grid and <Nproc> is the number of MPI ranks. The user may
+optionally additionally supply the number of MPI ranks in each dimension
+for the 3D communicator as [nx ny nz], and though this option is not currently
+available in this version of TestDfft and the underlying Distribution code,
+it would be fairly easy to re-activate that functionality.
+
+--------------
+Example Output
+--------------
+
+Check whether a 10240^3 grid will work on 32768 MPI ranks:
+
+$ ./CheckDecomposition 10240 10240 10240 32768
+distribution 1D: [32768:1:1]
+distribution 3D: [32:32:32]
+  2d_z: 256, 128, 1.
+distribution 2z: [256:128:1]
+  2d_x: 1, 256, 128.
+distribution 2x: [1:256:128]
+  2d_y: 256, 1, 128.
+distribution 2y: [256:1:128]
+
+================
+Additional Notes
+================
+
+-------------
+Integer Types
+-------------
+
+The signature of many MPI functions requires 32-bit integers, so we use those
+where required. The underlying distribution.h/.c code also uses 32-bit
+integers to keep track of the number of grid vertexes along the sides of
+the global grid, which likely does not present a practical limit on the
+size of 3D grids in the near future. I believe we always use 64-bit integers
+for iteration through the grids values themselves, so the total number of
+grid vertexes locally and globally should not be limited by 32-bit integer
+size. This distribution code has been tested up to 16384^3 global grid and
+on >~10^6 MPI-ranks.
+
+-------------------------------
+Fortran Multidimensional Arrays
+-------------------------------
+
+The linear storage in memory of multidimensional arrays differs between
+that of C (row-major) and Fortran (column-major). The Fortran interface
+provided here implicitly assumes that the one-dimensional memory storage
+of the arrays to be transformed conforms with the C convention. The 
+returned transformed data is also arranged in row-major format. Hence, care
+must be taken to ensure that data is arranged in this way when interfacing
+with the Fortran wrappers. In general, this involves a transpose of data when 
+using a multidimensional Fortran array to store the 3D data in memory. 
+

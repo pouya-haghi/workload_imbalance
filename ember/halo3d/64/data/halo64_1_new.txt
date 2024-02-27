@@ -1,0 +1,13 @@
+TACC:  Starting up job 7950969 
+TACC:  Starting parallel tasks... 
+# MPI Nearest Neighbor Communication
+# Info:
+# Processor Grid:              16 x       8 x      12
+# Data Grid (per rank):       800 x     400 x     240
+# Iterations:                 100
+# Variables:                    8
+# Sleep:                    10000
+# Results from rank: 840
+#                 Time KBytesXchng/Rank-Max            MB/S/Rank
+             15.005058          152000.0000           10129.9175
+TACC:  Shutdown complete. Exiting. 

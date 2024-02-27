@@ -1,0 +1,197 @@
+TACC:  Starting up job 7954986 
+TACC:  Starting parallel tasks... 
+Threads per process: 24
+Initializing redistribution using a pencil layout on 3072 ranks.
+distribution 1D: [3072:1:1]
+distribution 3D: [16:16:12]
+distribution 2z: [64:48:1]
+distribution 2x: [1:64:48]
+distribution 2y: [64:1:48]
+DFFT  init  max 3.114e-01s  avg 2.957e-01s  min 2.742e-01s  dev 5.864e-03s
+
+Hex representations of double precision floats
+0.000000e+00 = 0
+1.000000e+00 = 3ff0000000000000
+1811939328.000000 = 41db000000000000
+
+
+TESTING 0
+
+DFFT  fd32  max 6.186e-02s  avg 4.533e-02s  min 2.555e-02s  dev 8.964e-03s
+DFFT  f1dx  max 2.035e-01s  avg 7.589e-02s  min 1.248e-02s  dev 1.501e-02s
+DFFT  fd23  max 1.885e+00s  avg 1.629e+00s  min 7.174e-01s  dev 2.689e-01s
+DFFT  fd32  max 4.913e-02s  avg 3.171e-02s  min 1.171e-02s  dev 7.633e-03s
+DFFT  f1dy  max 1.829e-01s  avg 6.841e-02s  min 3.468e-02s  dev 1.314e-02s
+DFFT  fd23  max 8.060e-01s  avg 5.260e-01s  min 2.404e-02s  dev 1.499e-01s
+DFFT  fd32  max 1.313e-02s  avg 9.845e-03s  min 7.121e-03s  dev 1.481e-03s
+DFFT  f1dz  max 1.611e-01s  avg 6.961e-02s  min 2.775e-02s  dev 1.450e-02s
+DFFT fdist  max 2.786e+00s  avg 2.242e+00s  min 1.194e+00s  dev 3.469e-01s
+DFFT fdfft  max 3.703e-01s  avg 2.139e-01s  min 1.492e-01s  dev 2.796e-02s
+FORWARD     max 3.612e+00s  avg 3.612e+00s  min 3.611e+00s  dev 6.779e-05s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 1.438e-01s  avg 7.038e-02s  min 3.480e-02s  dev 1.391e-02s
+DFFT  bd23  max 4.793e-01s  avg 3.185e-01s  min 1.174e-01s  dev 8.631e-02s
+DFFT  bd32  max 4.730e-02s  avg 3.024e-02s  min 1.082e-02s  dev 7.423e-03s
+DFFT  b1dy  max 1.407e-01s  avg 6.850e-02s  min 3.268e-02s  dev 1.149e-02s
+DFFT  bd23  max 6.941e-01s  avg 4.970e-01s  min 2.496e-02s  dev 1.531e-01s
+DFFT  bd32  max 5.086e-02s  avg 3.609e-02s  min 1.446e-02s  dev 8.496e-03s
+DFFT  b1dx  max 1.812e-01s  avg 6.998e-02s  min 2.734e-02s  dev 1.293e-02s
+DFFT  bd23  max 6.913e-01s  avg 5.241e-01s  min 3.343e-02s  dev 1.164e-01s
+DFFT bdist  max 1.924e+00s  avg 1.406e+00s  min 5.483e-01s  dev 2.559e-01s
+DFFT bdfft  max 3.233e-01s  avg 2.089e-01s  min 1.247e-01s  dev 2.374e-02s
+BACKWARD    max 2.759e+00s  avg 2.759e+00s  min 2.759e+00s  dev 1.351e-05s
+
+r-space:
+a[0,0,0] = (1811939328.000000,0.000000) = (41db000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+
+TESTING 1
+
+DFFT  fd32  max 5.365e-02s  avg 3.786e-02s  min 1.591e-02s  dev 8.893e-03s
+DFFT  f1dx  max 1.348e-01s  avg 6.953e-02s  min 2.664e-02s  dev 1.183e-02s
+DFFT  fd23  max 7.171e-01s  avg 5.365e-01s  min 3.439e-02s  dev 1.387e-01s
+DFFT  fd32  max 4.921e-02s  avg 3.155e-02s  min 1.097e-02s  dev 7.942e-03s
+DFFT  f1dy  max 2.126e-01s  avg 6.974e-02s  min 3.192e-02s  dev 1.251e-02s
+DFFT  fd23  max 7.008e-01s  avg 5.086e-01s  min 2.651e-02s  dev 1.509e-01s
+DFFT  fd32  max 1.657e-02s  avg 9.295e-03s  min 6.730e-03s  dev 1.444e-03s
+DFFT  f1dz  max 1.429e-01s  avg 7.026e-02s  min 3.661e-02s  dev 1.321e-02s
+DFFT fdist  max 1.509e+00s  avg 1.124e+00s  min 3.583e-01s  dev 2.341e-01s
+DFFT fdfft  max 3.606e-01s  avg 2.095e-01s  min 1.410e-01s  dev 2.549e-02s
+FORWARD     max 2.317e+00s  avg 2.317e+00s  min 2.312e+00s  dev 1.215e-04s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 1.524e-01s  avg 6.928e-02s  min 3.109e-02s  dev 1.225e-02s
+DFFT  bd23  max 2.431e+00s  avg 6.031e-01s  min 1.181e-01s  dev 7.059e-01s
+DFFT  bd32  max 5.063e-02s  avg 3.234e-02s  min 1.120e-02s  dev 8.029e-03s
+DFFT  b1dy  max 1.502e-01s  avg 6.896e-02s  min 2.725e-02s  dev 1.270e-02s
+DFFT  bd23  max 7.043e-01s  avg 5.152e-01s  min 3.440e-02s  dev 1.503e-01s
+DFFT  bd32  max 5.644e-02s  avg 3.859e-02s  min 1.364e-02s  dev 9.920e-03s
+DFFT  b1dx  max 1.412e-01s  avg 6.991e-02s  min 3.277e-02s  dev 1.324e-02s
+DFFT  bd23  max 6.803e-01s  avg 5.097e-01s  min 4.555e-02s  dev 1.317e-01s
+DFFT bdist  max 3.897e+00s  avg 1.699e+00s  min 5.257e-01s  dev 7.970e-01s
+DFFT bdfft  max 3.358e-01s  avg 2.081e-01s  min 1.424e-01s  dev 2.382e-02s
+BACKWARD    max 4.698e+00s  avg 4.698e+00s  min 4.698e+00s  dev 1.233e-05s
+
+r-space:
+a[0,0,0] = (1811939328.000000,0.000000) = (41db000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+
+TESTING 2
+
+DFFT  fd32  max 5.493e-02s  avg 3.842e-02s  min 1.414e-02s  dev 9.183e-03s
+DFFT  f1dx  max 1.556e-01s  avg 6.984e-02s  min 2.716e-02s  dev 1.291e-02s
+DFFT  fd23  max 7.042e-01s  avg 5.254e-01s  min 3.376e-02s  dev 1.388e-01s
+DFFT  fd32  max 4.858e-02s  avg 3.185e-02s  min 1.165e-02s  dev 7.695e-03s
+DFFT  f1dy  max 1.446e-01s  avg 6.949e-02s  min 4.530e-02s  dev 1.238e-02s
+DFFT  fd23  max 6.896e-01s  avg 4.903e-01s  min 2.629e-02s  dev 1.551e-01s
+DFFT  fd32  max 1.336e-02s  avg 9.267e-03s  min 6.721e-03s  dev 1.420e-03s
+DFFT  f1dz  max 1.351e-01s  avg 6.924e-02s  min 4.266e-02s  dev 1.201e-02s
+DFFT fdist  max 1.483e+00s  avg 1.095e+00s  min 3.427e-01s  dev 2.431e-01s
+DFFT fdfft  max 3.593e-01s  avg 2.086e-01s  min 1.375e-01s  dev 2.478e-02s
+FORWARD     max 2.290e+00s  avg 2.290e+00s  min 2.289e+00s  dev 7.314e-05s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 1.341e-01s  avg 6.967e-02s  min 3.799e-02s  dev 1.287e-02s
+DFFT  bd23  max 5.238e-01s  avg 3.310e-01s  min 1.291e-01s  dev 9.423e-02s
+DFFT  bd32  max 4.924e-02s  avg 3.203e-02s  min 1.186e-02s  dev 7.778e-03s
+DFFT  b1dy  max 1.379e-01s  avg 6.906e-02s  min 2.594e-02s  dev 1.223e-02s
+DFFT  bd23  max 6.965e-01s  avg 5.076e-01s  min 2.313e-02s  dev 1.492e-01s
+DFFT  bd32  max 5.775e-02s  avg 3.926e-02s  min 1.477e-02s  dev 9.568e-03s
+DFFT  b1dx  max 1.369e-01s  avg 6.898e-02s  min 4.254e-02s  dev 1.180e-02s
+DFFT  bd23  max 7.239e-01s  avg 5.442e-01s  min 4.390e-02s  dev 1.386e-01s
+DFFT bdist  max 2.012e+00s  avg 1.454e+00s  min 5.230e-01s  dev 2.801e-01s
+DFFT bdfft  max 3.454e-01s  avg 2.077e-01s  min 1.291e-01s  dev 2.359e-02s
+BACKWARD    max 2.814e+00s  avg 2.814e+00s  min 2.814e+00s  dev 5.362e-06s
+
+r-space:
+a[0,0,0] = (1811939328.000000,0.000000) = (41db000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+
+TESTING 3
+
+DFFT  fd32  max 5.351e-02s  avg 3.709e-02s  min 1.484e-02s  dev 9.109e-03s
+DFFT  f1dx  max 1.355e-01s  avg 6.936e-02s  min 2.639e-02s  dev 1.268e-02s
+DFFT  fd23  max 7.082e-01s  avg 5.257e-01s  min 3.390e-02s  dev 1.399e-01s
+DFFT  fd32  max 4.935e-02s  avg 3.144e-02s  min 1.147e-02s  dev 7.744e-03s
+DFFT  f1dy  max 1.729e-01s  avg 6.936e-02s  min 4.571e-02s  dev 1.265e-02s
+DFFT  fd23  max 7.449e-01s  avg 5.249e-01s  min 1.918e-02s  dev 1.675e-01s
+DFFT  fd32  max 1.410e-02s  avg 9.113e-03s  min 6.520e-03s  dev 1.419e-03s
+DFFT  f1dz  max 1.438e-01s  avg 6.911e-02s  min 4.460e-02s  dev 1.219e-02s
+DFFT fdist  max 1.534e+00s  avg 1.128e+00s  min 3.194e-01s  dev 2.437e-01s
+DFFT fdfft  max 3.532e-01s  avg 2.078e-01s  min 1.454e-01s  dev 2.658e-02s
+FORWARD     max 2.343e+00s  avg 2.343e+00s  min 2.342e+00s  dev 7.250e-05s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 1.367e-01s  avg 6.927e-02s  min 3.317e-02s  dev 1.277e-02s
+DFFT  bd23  max 4.718e-01s  avg 3.110e-01s  min 1.269e-01s  dev 8.549e-02s
+DFFT  bd32  max 4.922e-02s  avg 3.258e-02s  min 1.076e-02s  dev 8.171e-03s
+DFFT  b1dy  max 1.873e-01s  avg 6.822e-02s  min 2.893e-02s  dev 1.237e-02s
+DFFT  bd23  max 7.061e-01s  avg 5.070e-01s  min 2.477e-02s  dev 1.612e-01s
+DFFT  bd32  max 5.182e-02s  avg 3.622e-02s  min 1.411e-02s  dev 8.459e-03s
+DFFT  b1dx  max 1.392e-01s  avg 6.890e-02s  min 3.594e-02s  dev 1.241e-02s
+DFFT  bd23  max 6.979e-01s  avg 5.173e-01s  min 3.310e-02s  dev 1.370e-01s
+DFFT bdist  max 1.957e+00s  avg 1.404e+00s  min 5.169e-01s  dev 2.844e-01s
+DFFT bdfft  max 3.413e-01s  avg 2.064e-01s  min 1.401e-01s  dev 2.395e-02s
+BACKWARD    max 2.740e+00s  avg 2.740e+00s  min 2.740e+00s  dev 1.493e-05s
+
+r-space:
+a[0,0,0] = (1811939328.000000,0.000000) = (41db000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+
+TESTING 4
+
+DFFT  fd32  max 5.302e-02s  avg 3.761e-02s  min 1.392e-02s  dev 9.053e-03s
+DFFT  f1dx  max 1.428e-01s  avg 6.833e-02s  min 2.607e-02s  dev 1.160e-02s
+DFFT  fd23  max 6.812e-01s  avg 5.116e-01s  min 2.914e-02s  dev 1.321e-01s
+DFFT  fd32  max 5.699e-02s  avg 3.274e-02s  min 1.150e-02s  dev 8.928e-03s
+DFFT  f1dy  max 1.498e-01s  avg 6.904e-02s  min 4.471e-02s  dev 1.233e-02s
+DFFT  fd23  max 7.479e-01s  avg 5.244e-01s  min 2.634e-02s  dev 1.676e-01s
+DFFT  fd32  max 1.321e-02s  avg 8.935e-03s  min 6.420e-03s  dev 1.380e-03s
+DFFT  f1dz  max 1.370e-01s  avg 6.897e-02s  min 2.637e-02s  dev 1.239e-02s
+DFFT fdist  max 1.519e+00s  avg 1.115e+00s  min 3.396e-01s  dev 2.454e-01s
+DFFT fdfft  max 3.432e-01s  avg 2.063e-01s  min 1.350e-01s  dev 2.537e-02s
+FORWARD     max 2.327e+00s  avg 2.327e+00s  min 2.326e+00s  dev 7.293e-05s
+
+k-space:
+real in [1.000000e+00,1.000000e+00] = [3ff0000000000000,3ff0000000000000]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+DFFT  b1dz  max 1.435e-01s  avg 6.859e-02s  min 3.908e-02s  dev 1.215e-02s
+DFFT  bd23  max 6.449e-01s  avg 4.520e-01s  min 2.370e-01s  dev 1.030e-01s
+DFFT  bd32  max 4.857e-02s  avg 3.087e-02s  min 1.137e-02s  dev 7.489e-03s
+DFFT  b1dy  max 1.660e-01s  avg 6.853e-02s  min 3.334e-02s  dev 1.227e-02s
+DFFT  bd23  max 7.033e-01s  avg 5.002e-01s  min 2.529e-02s  dev 1.572e-01s
+DFFT  bd32  max 5.064e-02s  avg 3.614e-02s  min 1.506e-02s  dev 8.206e-03s
+DFFT  b1dx  max 1.459e-01s  avg 6.850e-02s  min 3.318e-02s  dev 1.186e-02s
+DFFT  bd23  max 7.158e-01s  avg 5.328e-01s  min 3.445e-02s  dev 1.424e-01s
+DFFT bdist  max 2.140e+00s  avg 1.552e+00s  min 6.130e-01s  dev 2.976e-01s
+DFFT bdfft  max 3.220e-01s  avg 2.056e-01s  min 1.532e-01s  dev 2.357e-02s
+BACKWARD    max 2.941e+00s  avg 2.941e+00s  min 2.941e+00s  dev 2.289e-05s
+
+r-space:
+a[0,0,0] = (1811939328.000000,0.000000) = (41db000000000000,0)
+real in [0.000000e+00,0.000000e+00] = [0,0]
+imag in [0.000000e+00,0.000000e+00] = [0,0]
+
+TACC:  Shutdown complete. Exiting. 

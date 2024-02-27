@@ -1,0 +1,39 @@
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 24
+  Number of OpenMP threads: 1
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 1.83468e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 20.3939
+  DDOT    : 2.33844
+  WAXPBY  : 1.43694
+  SPARSEMV: 16.5538
+FLOPS Summary: 
+  Total   : 2.28864e+11
+  DDOT    : 1.4304e+10
+  WAXPBY  : 2.1456e+10
+  SPARSEMV: 1.93104e+11
+MFLOPS Summary: 
+  Total   : 11222.2
+  DDOT    : 6116.91
+  WAXPBY  : 14931.8
+  SPARSEMV: 11665.3
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 1.64374
+  Max DDOT MPI_Allreduce time: 2.08982
+  Avg DDOT MPI_Allreduce time: 1.83594
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 11360.8
+  SPARSEMV PARALLEL OVERHEAD Time: 0.443685
+  SPARSEMV PARALLEL OVERHEAD Pct: 2.6103
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.389403
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 2.29095
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 0.0542817
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 0.319352

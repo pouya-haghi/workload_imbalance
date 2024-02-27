@@ -1,0 +1,16 @@
+TACC:  Starting up job 7946238 
+TACC:  Starting parallel tasks... 
+      creating/filling mesh...0.0149119s, total time: 0.0149119
+generating matrix structure...
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 279414 RUNNING AT c506-134
+=   EXIT CODE: 11
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+TACC:  MPI job exited with code: 11 
+TACC:  Shutdown complete. Exiting. 

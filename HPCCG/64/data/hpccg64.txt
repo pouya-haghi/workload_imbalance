@@ -1,0 +1,100 @@
+TACC:  Starting up job 8073091 
+TACC:  Starting parallel tasks... 
+TACC:  MPI job exited with code: 141 
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8079283 
+TACC:  Starting parallel tasks... 
+Initial Residual = 1.55192e+06
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 1536
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 200
+  ny: 100
+  nz: 100
+Number of iterations: 2
+Final residual: -nan
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 1.19084
+  DDOT    : 0.863338
+  WAXPBY  : 0.249526
+  SPARSEMV: 0.0757079
+FLOPS Summary: 
+  Total   : -1.5654e+11
+  DDOT    : -9.78374e+09
+  WAXPBY  : -1.46756e+10
+  SPARSEMV: -1.3208e+11
+MFLOPS Summary: 
+  Total   : -131453
+  DDOT    : -11332.5
+  WAXPBY  : -58813.9
+  SPARSEMV: -1.74461e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 0.688857
+  Max DDOT MPI_Allreduce time: 1.00092
+  Avg DDOT MPI_Allreduce time: 0.893733
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: -551599
+  SPARSEMV PARALLEL OVERHEAD Time: 0.163742
+  SPARSEMV PARALLEL OVERHEAD Pct: 68.3826
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.163731
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 68.3779
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 1.12057e-05
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 0.00467975
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8079848 
+TACC:  Starting parallel tasks... 
+Initial Residual = 87496.3
+Iteration = 15   Residual = 1191.63
+Iteration = 30   Residual = 7.78749
+Iteration = 45   Residual = 0.0470302
+Iteration = 60   Residual = 0.000121162
+Iteration = 75   Residual = 6.30027e-07
+Iteration = 90   Residual = 4.74896e-09
+Iteration = 105   Residual = 1.77117e-11
+Iteration = 120   Residual = 1.07919e-13
+Iteration = 135   Residual = 6.87344e-16
+Iteration = 149   Residual = 5.44136e-18
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 1536
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 5.44136e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 97.0751
+  DDOT    : 74.9082
+  WAXPBY  : 16.4516
+  SPARSEMV: 4.92979
+FLOPS Summary: 
+  Total   : 1.46473e+13
+  DDOT    : 9.15456e+11
+  WAXPBY  : 1.37318e+12
+  SPARSEMV: 1.23587e+13
+MFLOPS Summary: 
+  Total   : 150886
+  DDOT    : 12221
+  WAXPBY  : 83468
+  SPARSEMV: 2.50693e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 67.3043
+  Max DDOT MPI_Allreduce time: 73.8945
+  Avg DDOT MPI_Allreduce time: 70.5992
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 2.10074e+06
+  SPARSEMV PARALLEL OVERHEAD Time: 0.953206
+  SPARSEMV PARALLEL OVERHEAD Pct: 16.2027
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.18522
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 3.1484
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 0.767986
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 13.0543
+TACC:  Shutdown complete. Exiting. 

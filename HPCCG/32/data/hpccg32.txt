@@ -1,0 +1,125 @@
+TACC:  Starting up job 8065476 
+TACC:  Starting parallel tasks... 
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 167768 RUNNING AT c498-004
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+TACC:  MPI job exited with code: 6 
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8073089 
+TACC:  Starting parallel tasks... 
+TACC:  MPI job exited with code: 141 
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8079274 
+TACC:  Starting up job 8079277 
+TACC:  Starting parallel tasks... 
+TACC:  Starting parallel tasks... 
+Initial Residual = 61877.4
+Initial Residual = 61877.4
+Iteration = 15   Residual = 842.719
+Iteration = 15   Residual = 842.719
+Iteration = 30   Residual = 5.50734
+Iteration = 30   Residual = 5.50734
+Iteration = 45   Residual = 0.033262
+Iteration = 45   Residual = 0.033262
+Iteration = 60   Residual = 8.61299e-05
+Iteration = 60   Residual = 8.61299e-05
+Iteration = 75   Residual = 4.69459e-07
+Iteration = 75   Residual = 4.69459e-07
+Iteration = 90   Residual = 3.60507e-09
+Iteration = 90   Residual = 3.60507e-09
+Iteration = 105   Residual = 1.41392e-11
+Iteration = 105   Residual = 1.41392e-11
+Iteration = 120   Residual = 7.95285e-14
+Iteration = 120   Residual = 7.95285e-14
+Iteration = 135   Residual = 5.14837e-16
+Iteration = 135   Residual = 5.14837e-16
+Iteration = 149   Residual = 4.23176e-18
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 768
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 4.23176e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 126.409
+  DDOT    : 101.499
+  WAXPBY  : 17.3712
+  SPARSEMV: 4.86905
+FLOPS Summary: 
+  Total   : 7.32365e+12
+  DDOT    : 4.57728e+11
+  WAXPBY  : 6.86592e+11
+  SPARSEMV: 6.17933e+12
+MFLOPS Summary: 
+  Total   : 57936.1
+  DDOT    : 4509.68
+  WAXPBY  : 39524.7
+  SPARSEMV: 1.2691e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 82.8308
+  Max DDOT MPI_Allreduce time: 101.664
+  Avg DDOT MPI_Allreduce time: 98.1066
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 788511
+  SPARSEMV PARALLEL OVERHEAD Time: 2.96765
+  SPARSEMV PARALLEL OVERHEAD Pct: 37.8686
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.306716
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 3.91384
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 2.66094
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 33.9548
+TACC:  Shutdown complete. Exiting. 
+Iteration = 149   Residual = 4.23176e-18
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 768
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 4.23176e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 127.569
+  DDOT    : 104.041
+  WAXPBY  : 16.5609
+  SPARSEMV: 4.51056
+FLOPS Summary: 
+  Total   : 7.32365e+12
+  DDOT    : 4.57728e+11
+  WAXPBY  : 6.86592e+11
+  SPARSEMV: 6.17933e+12
+MFLOPS Summary: 
+  Total   : 57409.4
+  DDOT    : 4399.51
+  WAXPBY  : 41458.5
+  SPARSEMV: 1.36997e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 83.9522
+  Max DDOT MPI_Allreduce time: 104.171
+  Avg DDOT MPI_Allreduce time: 99.2441
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 858891
+  SPARSEMV PARALLEL OVERHEAD Time: 2.68399
+  SPARSEMV PARALLEL OVERHEAD Pct: 37.3059
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.234948
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 3.26564
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 2.44904
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 34.0403
+TACC:  Shutdown complete. Exiting. 

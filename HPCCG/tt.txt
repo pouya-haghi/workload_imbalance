@@ -1,0 +1,50 @@
+Initial Residual = 11027.8
+Iteration = 15   Residual = 150.149
+Iteration = 30   Residual = 0.981782
+Iteration = 45   Residual = 0.00595096
+Iteration = 60   Residual = 1.91007e-05
+Iteration = 75   Residual = 1.34499e-07
+Iteration = 90   Residual = 8.10223e-10
+Iteration = 105   Residual = 5.5914e-12
+Iteration = 120   Residual = 2.93263e-14
+Iteration = 135   Residual = 1.8525e-16
+Iteration = 149   Residual = 1.83468e-18
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 24
+  Number of OpenMP threads: 1
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 149
+Final residual: 1.83468e-18
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 20.397
+  DDOT    : 2.05919
+  WAXPBY  : 1.55243
+  SPARSEMV: 16.6889
+FLOPS Summary: 
+  Total   : 2.28864e+11
+  DDOT    : 1.4304e+10
+  WAXPBY  : 2.1456e+10
+  SPARSEMV: 1.93104e+11
+MFLOPS Summary: 
+  Total   : 11220.5
+  DDOT    : 6946.43
+  WAXPBY  : 13820.9
+  SPARSEMV: 11570.8
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 1.5696
+  Max DDOT MPI_Allreduce time: 1.82319
+  Avg DDOT MPI_Allreduce time: 1.70697
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 11226
+  SPARSEMV PARALLEL OVERHEAD Time: 0.512663
+  SPARSEMV PARALLEL OVERHEAD Pct: 2.98033
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.433118
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 2.5179
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 0.0795448
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 0.462428

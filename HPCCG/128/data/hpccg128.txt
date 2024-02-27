@@ -1,0 +1,96 @@
+TACC:  Starting up job 8079851 
+TACC:  Starting parallel tasks... 
+Initial Residual = 1.55192e+06
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 3072
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 100
+  ny: 100
+  nz: 100
+Number of iterations: 2
+Final residual: -nan
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 1.32254
+  DDOT    : 0.988564
+  WAXPBY  : 0.311169
+  SPARSEMV: 0.0211387
+FLOPS Summary: 
+  Total   : -1.5654e+11
+  DDOT    : -9.78374e+09
+  WAXPBY  : -1.46756e+10
+  SPARSEMV: -1.3208e+11
+MFLOPS Summary: 
+  Total   : -118363
+  DDOT    : -9896.92
+  WAXPBY  : -47162.8
+  SPARSEMV: -6.24829e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 0.724484
+  Max DDOT MPI_Allreduce time: 1.12016
+  Avg DDOT MPI_Allreduce time: 0.970163
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: -609677
+  SPARSEMV PARALLEL OVERHEAD Time: 0.195501
+  SPARSEMV PARALLEL OVERHEAD Pct: 90.2425
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 0.195492
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 90.2382
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 9.29832e-06
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 0.00429206
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8082195 
+TACC:  Starting parallel tasks... 
+Initial Residual = 58828.7
+Iteration = 15   Residual = 711.511
+Iteration = 30   Residual = 1.36826
+Iteration = 45   Residual = 0.00337662
+Iteration = 60   Residual = 1.73731e-05
+Iteration = 75   Residual = 5.90222e-08
+Iteration = 90   Residual = 2.48118e-10
+Iteration = 105   Residual = 1.26102e-12
+Iteration = 120   Residual = 8.99229e-15
+Iteration = 135   Residual = 3.60053e-17
+Iteration = 149   Residual = 2.9508e-19
+Mini-Application Name: hpccg
+Mini-Application Version: 1.0
+Parallelism: 
+  Number of MPI ranks: 3072
+  Number of OpenMP threads: 24
+Dimensions: 
+  nx: 50
+  ny: 50
+  nz: 50
+Number of iterations: 149
+Final residual: 2.9508e-19
+#********** Performance Summary (times in sec) ***********: 
+Time Summary: 
+  Total   : 104.2
+  DDOT    : 87.2136
+  WAXPBY  : 13.3368
+  SPARSEMV: 1.23389
+FLOPS Summary: 
+  Total   : 3.66182e+12
+  DDOT    : 2.28864e+11
+  WAXPBY  : 3.43296e+11
+  SPARSEMV: 3.08966e+12
+MFLOPS Summary: 
+  Total   : 35142.3
+  DDOT    : 2624.18
+  WAXPBY  : 25740.5
+  SPARSEMV: 2.50399e+06
+DDOT Timing Variations: 
+  Min DDOT MPI_Allreduce time: 76.7039
+  Max DDOT MPI_Allreduce time: 87.1063
+  Avg DDOT MPI_Allreduce time: 82.2093
+SPARSEMV OVERHEADS: 
+  SPARSEMV MFLOPS W OVERHEAD: 622328
+  SPARSEMV PARALLEL OVERHEAD Time: 3.7308
+  SPARSEMV PARALLEL OVERHEAD Pct: 75.1466
+  SPARSEMV PARALLEL OVERHEAD Setup Time: 1.32046
+  SPARSEMV PARALLEL OVERHEAD Setup Pct: 26.5971
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Time: 2.41033
+  SPARSEMV PARALLEL OVERHEAD Bdry Exch Pct: 48.5495
+TACC:  Shutdown complete. Exiting. 

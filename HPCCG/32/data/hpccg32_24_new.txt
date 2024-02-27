@@ -1,0 +1,19 @@
+TACC:  Starting up job 8049861 
+TACC:  Starting parallel tasks... 
+TACC:  MPI job exited with code: 255 
+TACC:  Shutdown complete. Exiting. 
+TACC:  Starting up job 8050984 
+TACC:  Starting parallel tasks... 
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 108121 RUNNING AT c506-094
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+   Intel(R) MPI Library troubleshooting guide:
+      https://software.intel.com/node/561764
+===================================================================================
+TACC:  MPI job exited with code: 6 
+TACC:  Shutdown complete. Exiting. 
